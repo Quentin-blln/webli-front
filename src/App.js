@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import * as React from 'react';
+import Tools from './components/tools'
 
 import './App.css';
 import AppBar from '@mui/material/AppBar';
@@ -14,6 +15,7 @@ import Popover from '@mui/material/Popover';
 
 function App() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [toolSelected, setToolSelected] = React.useState(0)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,6 +48,10 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
+        <Typography variant="h6" sx={{ m: 1, ml:6 }}>
+          Welcome on Webli
+        </Typography>
+        <Tools toolIndex={toolSelected}/>
       </Box>
       <Popover
         id={id}
@@ -58,9 +64,9 @@ function App() {
         }}
       >
         <Typography sx={{ p: 2 }}>Tools:</Typography>
-        <div><Button> Outils 1 </Button></div>
-        <div><Button>Outils 2</Button></div>
-        <div><Button>Outils 3</Button></div>
+        <div><Button onClick={() => setToolSelected(1)}> Outils 1 </Button></div>
+        <div><Button onClick={() => setToolSelected(2)}> Outils 2 </Button></div>
+        <div><Button onClick={() => setToolSelected(3)}> Outils 3 </Button></div>
       </Popover>
     </div>
   );
