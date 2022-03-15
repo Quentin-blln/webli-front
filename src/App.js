@@ -48,9 +48,6 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Typography variant="h6" sx={{ m: 1, ml:6 }}>
-          Welcome on Webli
-        </Typography>
         <Tools toolIndex={toolSelected}/>
       </Box>
       <Popover
