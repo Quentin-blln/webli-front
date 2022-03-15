@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
+import { grey } from '@mui/material/colors';
+
 
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+      <AppBar position="static" style={{ background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,140,1) 50%, rgba(0,0,0,1) 100%)' }}>
           <Toolbar>
             <IconButton
               size="large"

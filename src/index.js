@@ -9,8 +9,12 @@ import reportWebVitals from './reportWebVitals';
 />
 
 
+
+
 ReactDOM.render(
   <React.StrictMode>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.birds.min.js"></script>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

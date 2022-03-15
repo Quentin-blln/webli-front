@@ -4,11 +4,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import axios from 'axios'
+import ParticlesBg from 'particles-bg'
+import Particles, { ISourceOptions } from "react-tsparticles";
+import particleOptions from './particlesOptions';
 
 
 const Tools = (toolIndexOb) => {
     const [johnPassToCrack, setJohnPassToCrack] = React.useState('')
     const toolIndex = toolIndexOb.toolIndex
+
 
     const sendJohnHashToBack = (hash) => {
         let obj = {
@@ -53,10 +57,11 @@ const Tools = (toolIndexOb) => {
             )
         default:
             return(
-                <Typography variant="h6" sx={{ m: 1, ml:6 }}>
-                Welcome on Webli
-                </Typography>
-            )
+                <div style={{backgroundColor:'black', width:'100%', height:'100vh'}}>
+                    {/* <ParticlesBg type="cobweb" bg={true} color="#000000" num={100}/> */}
+                    <Particles options={particleOptions} />
+                </div>
+                )
     }
 }
 
