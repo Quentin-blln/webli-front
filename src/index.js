@@ -10,7 +10,6 @@ import reportWebVitals from './reportWebVitals';
 
 
 
-
 ReactDOM.render(
   <React.StrictMode>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>

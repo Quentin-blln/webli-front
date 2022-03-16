@@ -8,11 +8,25 @@
 }
 
 #logo {
-  width: 120px;
+  width: 100px;
   position: absolute;
-  top: 4%;
-  left: 90%;
+  top: 5%;
+  left: 95%;
   transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+#buttonfill{
+  width: 100%;
+}
+
+#logo_homepage {
+  width: 500px;
+  position: absolute;
+  left: 48%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  opacity: 40%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

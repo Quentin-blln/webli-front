@@ -116,7 +116,7 @@ const Tools = (toolIndexOb) => {
         default:
             return(
                 <div style={{backgroundColor:'black', width:'100%', height:'100vh'}}>
-                    {/* <ParticlesBg type="cobweb" bg={true} color="#000000" num={100}/> */}
+                    <img id="logo_homepage" src="../Webli_v2.png" alt="logo"/>
                     <Particles options={particleOptions} />
                 </div>
                 )

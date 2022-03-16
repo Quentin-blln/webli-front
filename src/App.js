@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
+import Link from '@mui/material/Link';
 import { grey } from '@mui/material/colors';
 
 
@@ -34,7 +35,8 @@ function App() {
     <div className="App">
       <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,140,1) 50%, rgba(0,0,0,1) 100%)' }}>
-          <Toolbar>
+        <a href='#' onClick={()=>{ setToolSelected(0)}}><img id="logo" src="Webli_v2.png" alt="logo"/></a>
+        <Toolbar>
             <IconButton
               size="large"
               edge="start"
@@ -46,7 +48,9 @@ function App() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              WEBLI
+            <Link sx={{ color:'white'}} href="#" underline="hover" onClick={()=>{ setToolSelected(0)}}>
+            WEBLI
+            </Link>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -64,12 +68,12 @@ function App() {
       >
 
         <Typography sx={{ p: 2 }}>Tools:</Typography>
-        <div><Button onClick={() => setToolSelected(1)}> JOHN THE RIPPER </Button></div>
-        <div><Button onClick={() => setToolSelected(2)}> NMAP </Button></div>
-        <div><Button onClick={() => setToolSelected(3)}> DDOS </Button></div>
-        <div><Button onClick={() => setToolSelected(4)}> HPING3 </Button></div>
-        <div><Button onClick={() => setToolSelected(5)}> FIERCE </Button></div>
-        <div><Button onClick={() => setToolSelected(6)}> WPSCAN </Button></div>
+        <div><Button onClick={() => setToolSelected(1)} id='buttonfill'> JOHN THE RIPPER </Button></div>
+        <div><Button onClick={() => setToolSelected(2)} id='buttonfill'> NMAP </Button></div>
+        <div><Button onClick={() => setToolSelected(3)} id='buttonfill'> DDOS </Button></div>
+        <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> HPING3 </Button></div>
+        <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> FIERCE </Button></div>
+        <div><Button onClick={() => setToolSelected(6)} id='buttonfill'> WPSCAN </Button></div>
       </Popover>
     </div>
   );
