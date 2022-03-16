@@ -22,6 +22,7 @@ const Tools = (toolIndexOb) => {
         axios
         .post('http://localhost:3001/john', obj)
         .then(resp=>{
+            console.log(resp.data)
             alert('Réponse de John: ', resp.data)
         })
         .catch(err=>{alert(err)})
