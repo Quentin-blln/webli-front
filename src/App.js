@@ -32,9 +32,7 @@ function App() {
     <div className="App">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
-          <ul>
-            <a href="#"><img id="logo" src="Webli_v2.png" alt="logo"/></a>
-          </ul>
+          <a href="#"><img id="logo" src="Webli_v2.png" alt="logo"/></a>
           <Toolbar>
             <IconButton
               size="large"
