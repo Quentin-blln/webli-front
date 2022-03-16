@@ -46,15 +46,73 @@ const Tools = (toolIndexOb) => {
         case 2:
             return(
                 <div>
-                    TOOL 2
+                    <Typography variant="h5" sx={{ m: 4}}>NMAP</Typography>
+                    <Box
+                        component="form"
+                        sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
+                        noValidate
+                        autoComplete="off">
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
+                        <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                    </Box>
                 </div>
             )
         case 3:
             return(
                 <div>
-                    TOOL 3
+                    <Typography variant="h5" sx={{ m: 4}}>DDOS</Typography>
+                    <Box
+                        component="form"
+                        sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
+                        noValidate
+                        autoComplete="off">
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
+                        <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                    </Box>
                 </div>
             )
+        case 4:
+                return(
+                    <div>
+                        <Typography variant="h5" sx={{ m: 4}}>HPING3</Typography>
+                        <Box
+                            component="form"
+                            sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
+                            noValidate
+                            autoComplete="off">
+                            <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
+                            <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                        </Box>
+                    </div>
+                )
+        case 5:
+                return(
+                        <div>
+                            <Typography variant="h5" sx={{ m: 4}}>FIERCE</Typography>
+                            <Box
+                                component="form"
+                                sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
+                                noValidate
+                                autoComplete="off">
+                                <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
+                                <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                            </Box>
+                        </div>
+                    )
+        case 6:
+                return(
+                            <div>
+                                <Typography variant="h5" sx={{ m: 4}}>WPSCAN</Typography>
+                                <Box
+                                    component="form"
+                                    sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
+                                    noValidate
+                                    autoComplete="off">
+                                    <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
+                                    <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                                </Box>
+                            </div>
+                        )
         default:
             return(
                 <div style={{backgroundColor:'black', width:'100%', height:'100vh'}}>

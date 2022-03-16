@@ -62,10 +62,14 @@ function App() {
           horizontal: 'left',
         }}
       >
+
         <Typography sx={{ p: 2 }}>Tools:</Typography>
-        <div><Button onClick={() => setToolSelected(1)}> Outils 1 </Button></div>
-        <div><Button onClick={() => setToolSelected(2)}> Outils 2 </Button></div>
-        <div><Button onClick={() => setToolSelected(3)}> Outils 3 </Button></div>
+        <div><Button onClick={() => setToolSelected(1)}> JOHN THE RIPPER </Button></div>
+        <div><Button onClick={() => setToolSelected(2)}> NMAP </Button></div>
+        <div><Button onClick={() => setToolSelected(3)}> DDOS </Button></div>
+        <div><Button onClick={() => setToolSelected(4)}> HPING3 </Button></div>
+        <div><Button onClick={() => setToolSelected(5)}> FIERCE </Button></div>
+        <div><Button onClick={() => setToolSelected(6)}> WPSCAN </Button></div>
       </Popover>
     </div>
   );
