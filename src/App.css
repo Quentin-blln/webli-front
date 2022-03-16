@@ -14,6 +14,12 @@
   left: 95%;
   transform: translate(-50%, -50%);
   z-index: 999;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #buttonfill{
@@ -27,6 +33,12 @@
   top: 60%;
   transform: translate(-50%, -50%);
   opacity: 40%;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
