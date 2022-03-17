@@ -19,6 +19,7 @@ import {
 const Tools = (toolIndexOb) => {
     const [johnPassToCrack, setJohnPassToCrack] = React.useState('')
     const [ipOrDomain, setIpOrDomain] = React.useState('')
+    const [numberOfPaquets, setNumberOfPaquets] = React.useState(5000)
     const [waitingForResponse, setWaitingForResponse] = React.useState(false)
     const [backResponse, setBackResponse] = React.useState('Here will appear the kali command response')
 
@@ -119,10 +120,10 @@ const Tools = (toolIndexOb) => {
             })
     }
 
-    const sendDDOSIpOrDomainToBack = (ipOrDomain) => {
+    const sendDDOSIpOrDomainToBack = (ipOrDomain, numberOfPaquets) => {
         setWaitingForResponse(true)
         axios
-            .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain })
+            .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain, numberOfPaquets: numberOfPaquets })
             .then(resp => {
                 setWaitingForResponse(false)
                 setBackResponse(resp.data)
@@ -259,7 +260,8 @@ const Tools = (toolIndexOb) => {
                             noValidate
                             autoComplete="off">
                             <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
-                            <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain) }}> Send </Button>
+                            <TextField defaultValue={numberOfPaquets} id="outlined-basic" label="Paquets to send" variant="outlined" onChange={(event) => { setNumberOfPaquets(event.target.value) }} />
+                            <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain, numberOfPaquets) }}> Send </Button>
                         </Box>
                         <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                         {waitingForResponse
