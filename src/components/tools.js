@@ -11,10 +11,13 @@ import particleOptions from './particlesOptions';
 
 const Tools = (toolIndexOb) => {
     const [johnPassToCrack, setJohnPassToCrack] = React.useState('')
+    const [nmapIpOrDomain, setNmapIpOrDomain] = React.useState('')
+    const [waitingForResponse, setWaitingForResponse] = React.useState(false)
     const toolIndex = toolIndexOb.toolIndex
 
 
     const sendJohnHashToBack = (hash) => {
+        setWaitingForResponse(true)
         let obj = {
             cmd: 'john hash.txt',
             hash: hash
@@ -22,9 +25,27 @@ const Tools = (toolIndexOb) => {
         axios
         .post('http://localhost:3001/john', obj)
         .then(resp=>{
+            setWaitingForResponse(false)
             alert('Réponse de John: ', resp.data)
         })
-        .catch(err=>{alert(err)})
+        .catch(err=>{
+            setWaitingForResponse(false)
+            alert(err)
+        })
+    }
+
+    const sendIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+        .post('http://localhost:3001/nmap', {ipOrDomain: ipOrDomain})
+        .then(resp=>{
+            setWaitingForResponse(false)
+            alert('Réponse de John: ', resp.data)
+        })
+        .catch(err=>{
+            alert(err)
+            setWaitingForResponse(false)
+        })
     }
 
     console.log(toolIndex)
@@ -52,8 +73,8 @@ const Tools = (toolIndexOb) => {
                         sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
                         noValidate
                         autoComplete="off">
-                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
-                        <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setNmapIpOrDomain(event.target.value)}}/>
+                        <Button onClick={()=>{sendIpOrDomainToBack(nmapIpOrDomain)}}> Send </Button> 
                     </Box>
                 </div>
             )
@@ -115,7 +136,7 @@ const Tools = (toolIndexOb) => {
                         )
         default:
             return(
-                <div style={{backgroundColor:'black', width:'100%', height:'100vh'}}>
+                <div style={{backgroundColor:'black', width:'100%', height:'100vh', transition: 'background-color 2s linear'}}>
                     <img id="logo_homepage" src="../Webli_v2.png" alt="logo"/>
                     <Particles options={particleOptions} />
                 </div>

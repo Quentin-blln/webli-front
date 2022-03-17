@@ -48,7 +48,7 @@ function App() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link sx={{ color:'white'}} href="#" underline="hover" onClick={()=>{ setToolSelected(0)}}>
+            <Link sx={{ color:'white'}} href="#" underline="none" onClick={()=>{ setToolSelected(0)}}>
             WEBLI
             </Link>
             </Typography>
