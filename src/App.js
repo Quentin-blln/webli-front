@@ -71,9 +71,8 @@ function App() {
         <div><Button onClick={() => setToolSelected(1)} id='buttonfill'> JOHN THE RIPPER </Button></div>
         <div><Button onClick={() => setToolSelected(2)} id='buttonfill'> NMAP </Button></div>
         <div><Button onClick={() => setToolSelected(3)} id='buttonfill'> DDOS </Button></div>
-        <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> HPING3 </Button></div>
-        <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> FIERCE </Button></div>
-        <div><Button onClick={() => setToolSelected(6)} id='buttonfill'> WPSCAN </Button></div>
+        <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> FIERCE </Button></div>
+        <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> WPSCAN </Button></div>
       </Popover>
     </div>
   );

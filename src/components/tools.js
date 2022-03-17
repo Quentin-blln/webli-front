@@ -7,6 +7,8 @@ import axios from 'axios'
 import ParticlesBg from 'particles-bg'
 import Particles, { ISourceOptions } from "react-tsparticles";
 import particleOptions from './particlesOptions';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const Tools = (toolIndexOb) => {
@@ -62,6 +64,13 @@ const Tools = (toolIndexOb) => {
                         <TextField id="outlined-basic" label="Password hash" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
                         <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}>Crack now</Button> 
                     </Box>
+                    {waitingForResponse
+                    ?
+                    <Box className='loading'>
+                        <CircularProgress />
+                    </Box>
+                    :null
+                    }
                 </div>
             )
         case 2:
@@ -76,6 +85,13 @@ const Tools = (toolIndexOb) => {
                         <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setNmapIpOrDomain(event.target.value)}}/>
                         <Button onClick={()=>{sendIpOrDomainToBack(nmapIpOrDomain)}}> Send </Button> 
                     </Box>
+                    {waitingForResponse
+                    ?
+                    <Box className='loading'>
+                        <CircularProgress />
+                    </Box>
+                    :null
+                    }
                 </div>
             )
         case 3:
@@ -90,23 +106,16 @@ const Tools = (toolIndexOb) => {
                         <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
                         <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
                     </Box>
+                    {waitingForResponse
+                    ?
+                    <Box className='loading'>
+                        <CircularProgress />
+                    </Box>
+                    :null
+                    }
                 </div>
             )
         case 4:
-                return(
-                    <div>
-                        <Typography variant="h5" sx={{ m: 4}}>HPING3</Typography>
-                        <Box
-                            component="form"
-                            sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
-                            noValidate
-                            autoComplete="off">
-                            <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
-                            <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
-                        </Box>
-                    </div>
-                )
-        case 5:
                 return(
                         <div>
                             <Typography variant="h5" sx={{ m: 4}}>FIERCE</Typography>
@@ -118,9 +127,16 @@ const Tools = (toolIndexOb) => {
                                 <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
                                 <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
                             </Box>
+                            {waitingForResponse
+                                ?
+                                <Box className='loading'>
+                                    <CircularProgress />
+                                </Box>
+                                :null
+                                }
                         </div>
                     )
-        case 6:
+        case 5:
                 return(
                             <div>
                                 <Typography variant="h5" sx={{ m: 4}}>WPSCAN</Typography>
@@ -132,6 +148,13 @@ const Tools = (toolIndexOb) => {
                                     <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
                                     <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
                                 </Box>
+                                {waitingForResponse
+                                    ?
+                                    <Box className='loading'>
+                                        <CircularProgress />
+                                    </Box>
+                                    :null
+                                    }
                             </div>
                         )
         default:
