@@ -106,7 +106,12 @@ const Tools = (toolIndexOb) => {
             .post('http://localhost:3001/wpscan', { ipOrDomain: ipOrDomain })
             .then(resp => {
                 setWaitingForResponse(false)
-                setBackResponse(resp.data)
+                if(resp.data.includes('Command failed')){
+                    setBackResponse('This website do not use Wordpress.')
+                }
+                else{
+                    setBackResponse(resp.data)
+                }
             })
             .catch(err => {
                 alert(err)
@@ -190,6 +195,7 @@ const Tools = (toolIndexOb) => {
                         <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
                         <Button onClick={() => { sendSqlmapIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                     </Box>
+                    <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                     {waitingForResponse
                         ?
                         <Box className='loading'>
@@ -233,6 +239,7 @@ const Tools = (toolIndexOb) => {
                         <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
                         <Button onClick={() => { sendWpscanIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                     </Box>
+                    <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                     {waitingForResponse
                         ?
                         <Box className='loading'>
@@ -254,6 +261,7 @@ const Tools = (toolIndexOb) => {
                             <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
                             <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                         </Box>
+                        <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                         {waitingForResponse
                             ?
                             <Box className='loading'>
