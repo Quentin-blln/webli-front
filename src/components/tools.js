@@ -32,6 +32,10 @@ const Tools = (toolIndexOb) => {
     );
     let emulatorState = defaultState.setOutputs(newOutputs);
 
+    React.useEffect(()=>{
+        setJohnPassToCrack('')
+        setIpOrDomain('')
+    },[toolIndexOb])
 
 
     const sendJohnHashToBack = (hash) => {
@@ -74,7 +78,7 @@ const Tools = (toolIndexOb) => {
             .post('http://localhost:3001/sqlmap', { ipOrDomain: ipOrDomain })
             .then(resp => {
                 setWaitingForResponse(false)
-                alert('Réponse de sqlmap reçue')
+                setBackResponse(resp.data)
             })
             .catch(err => {
                 alert(err)
@@ -88,7 +92,7 @@ const Tools = (toolIndexOb) => {
             .post('http://localhost:3001/dnsscan', { ipOrDomain: ipOrDomain })
             .then(resp => {
                 setWaitingForResponse(false)
-                alert('Réponse de DnsScan reçue')
+                setBackResponse(resp.data)
             })
             .catch(err => {
                 alert(err)
@@ -102,7 +106,7 @@ const Tools = (toolIndexOb) => {
             .post('http://localhost:3001/wpscan', { ipOrDomain: ipOrDomain })
             .then(resp => {
                 setWaitingForResponse(false)
-                alert('Réponse de wpscan reçue')
+                setBackResponse(resp.data)
             })
             .catch(err => {
                 alert(err)
@@ -116,7 +120,7 @@ const Tools = (toolIndexOb) => {
             .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain })
             .then(resp => {
                 setWaitingForResponse(false)
-                alert('Réponse de ddos reçue')
+                setBackResponse(resp.data)
             })
             .catch(err => {
                 alert(err)
