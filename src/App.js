@@ -73,6 +73,7 @@ function App() {
         <div><Button onClick={() => setToolSelected(3)} id='buttonfill'> SQL MAP </Button></div>
         <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> DNS SCAN </Button></div>
         <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> WP SCAN </Button></div>
+        <div><Button onClick={() => setToolSelected(6)} id='buttonfill'> DDOS </Button></div>
       </Popover>
     </div>
   );

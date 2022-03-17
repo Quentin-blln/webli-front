@@ -50,7 +50,7 @@ const Tools = (toolIndexOb) => {
             .catch(err => {
                 setWaitingForResponse(false)
                 alert(err)
-            })       
+            })
     }
 
     const sendNmapIpOrDomainToBack = (ipOrDomain) => {
@@ -71,43 +71,57 @@ const Tools = (toolIndexOb) => {
     const sendSqlmapIpOrDomainToBack = (ipOrDomain) => {
         setWaitingForResponse(true)
         axios
-        .post('http://localhost:3001/sqlmap', {ipOrDomain: ipOrDomain})
-        .then(resp=>{
-            setWaitingForResponse(false)
-            alert('Réponse de sqlmap reçue')
-        })
-        .catch(err=>{
-            alert(err)
-            setWaitingForResponse(false)
-        })
+            .post('http://localhost:3001/sqlmap', { ipOrDomain: ipOrDomain })
+            .then(resp => {
+                setWaitingForResponse(false)
+                alert('Réponse de sqlmap reçue')
+            })
+            .catch(err => {
+                alert(err)
+                setWaitingForResponse(false)
+            })
     }
 
     const sendDnsscanIpOrDomainToBack = (ipOrDomain) => {
         setWaitingForResponse(true)
         axios
-        .post('http://localhost:3001/dnsscan', {ipOrDomain: ipOrDomain})
-        .then(resp=>{
-            setWaitingForResponse(false)
-            alert('Réponse de DnsScan reçue')
-        })
-        .catch(err=>{
-            alert(err)
-            setWaitingForResponse(false)
-        })
+            .post('http://localhost:3001/dnsscan', { ipOrDomain: ipOrDomain })
+            .then(resp => {
+                setWaitingForResponse(false)
+                alert('Réponse de DnsScan reçue')
+            })
+            .catch(err => {
+                alert(err)
+                setWaitingForResponse(false)
+            })
     }
 
     const sendWpscanIpOrDomainToBack = (ipOrDomain) => {
         setWaitingForResponse(true)
         axios
-        .post('http://localhost:3001/wpscan', {ipOrDomain: ipOrDomain})
-        .then(resp=>{
-            setWaitingForResponse(false)
-            alert('Réponse de wpscan reçue')
-        })
-        .catch(err=>{
-            alert(err)
-            setWaitingForResponse(false)
-        })
+            .post('http://localhost:3001/wpscan', { ipOrDomain: ipOrDomain })
+            .then(resp => {
+                setWaitingForResponse(false)
+                alert('Réponse de wpscan reçue')
+            })
+            .catch(err => {
+                alert(err)
+                setWaitingForResponse(false)
+            })
+    }
+
+    const sendDDOSIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+            .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain })
+            .then(resp => {
+                setWaitingForResponse(false)
+                alert('Réponse de ddos reçue')
+            })
+            .catch(err => {
+                alert(err)
+                setWaitingForResponse(false)
+            })
     }
 
     console.log(toolIndex)
@@ -144,8 +158,8 @@ const Tools = (toolIndexOb) => {
                         noValidate
                         autoComplete="off">
 
-                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
-                        <Button onClick={()=>{sendNmapIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                        <Button onClick={() => { sendNmapIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                     </Box>
                     <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                     {waitingForResponse
@@ -162,15 +176,15 @@ const Tools = (toolIndexOb) => {
             return (
                 <div>
 
-                    <Typography variant="h5" sx={{ m: 4}}>Sql Map</Typography>
+                    <Typography variant="h5" sx={{ m: 4 }}>Sql Map</Typography>
                     <Box
                         component="form"
                         sx={{ '& > :not(style)': { m: 1, width: '80ch' } }}
                         noValidate
                         autoComplete="off">
 
-                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
-                        <Button onClick={()=>{sendSqlmapIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                        <Button onClick={() => { sendSqlmapIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                     </Box>
                     {waitingForResponse
                         ?
@@ -184,14 +198,14 @@ const Tools = (toolIndexOb) => {
         case 4:
             return (
                 <div>
-                    <Typography variant="h5" sx={{ m: 4 }}>FIERCE</Typography>
+                    <Typography variant="h5" sx={{ m: 4 }}>DNS Scan</Typography>
                     <Box
                         component="form"
                         sx={{ '& > :not(style)': { m: 1, width: '80ch' } }}
                         noValidate
                         autoComplete="off">
-                        <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setJohnPassToCrack(event.target.value) }} />
-                         <Button onClick={()=>{sendWpscanIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                        <Button onClick={() => { sendDnsscanIpOrDomainToBack(ipOrDomain) }}> Send </Button>
                     </Box>
                     <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                     {waitingForResponse
@@ -205,25 +219,46 @@ const Tools = (toolIndexOb) => {
             )
         case 5:
             return (
-               <div>
-                                <Typography variant="h5" sx={{ m: 4}}>WPSCAN</Typography>
-                                <Box
-                                    component="form"
-                                    sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
-                                    noValidate
-                                    autoComplete="off">
-                                    <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
-                                    <Button onClick={()=>{sendWpscanIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
-                                </Box>
-                                {waitingForResponse
-                                    ?
-                                    <Box className='loading'>
-                                        <CircularProgress />
-                                    </Box>
-                                    :null
-                                    }
-                            </div>
+                <div>
+                    <Typography variant="h5" sx={{ m: 4 }}>WPSCAN</Typography>
+                    <Box
+                        component="form"
+                        sx={{ '& > :not(style)': { m: 1, width: '80ch' } }}
+                        noValidate
+                        autoComplete="off">
+                        <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                        <Button onClick={() => { sendWpscanIpOrDomainToBack(ipOrDomain) }}> Send </Button>
+                    </Box>
+                    {waitingForResponse
+                        ?
+                        <Box className='loading'>
+                            <CircularProgress />
+                        </Box>
+                        : null
+                    }
+                </div>
             )
+            case 6:
+                return (
+                    <div>
+                        <Typography variant="h5" sx={{ m: 4 }}>DDOS</Typography>
+                        <Box
+                            component="form"
+                            sx={{ '& > :not(style)': { m: 1, width: '80ch' } }}
+                            noValidate
+                            autoComplete="off">
+                            <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                            <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain) }}> Send </Button>
+                        </Box>
+                        {waitingForResponse
+                            ?
+                            <Box className='loading'>
+                                <CircularProgress />
+                            </Box>
+                            : null
+                        }
+                    </div>
+                )
 
         default:
             return (
