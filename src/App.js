@@ -70,9 +70,9 @@ function App() {
         <Typography sx={{ p: 2 }}>Tools:</Typography>
         <div><Button onClick={() => setToolSelected(1)} id='buttonfill'> JOHN THE RIPPER </Button></div>
         <div><Button onClick={() => setToolSelected(2)} id='buttonfill'> NMAP </Button></div>
-        <div><Button onClick={() => setToolSelected(3)} id='buttonfill'> DDOS </Button></div>
-        <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> FIERCE </Button></div>
-        <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> WPSCAN </Button></div>
+        <div><Button onClick={() => setToolSelected(3)} id='buttonfill'> SQL MAP </Button></div>
+        <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> DNS SCAN </Button></div>
+        <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> WP SCAN </Button></div>
       </Popover>
     </div>
   );
