@@ -13,7 +13,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Tools = (toolIndexOb) => {
     const [johnPassToCrack, setJohnPassToCrack] = React.useState('')
-    const [nmapIpOrDomain, setNmapIpOrDomain] = React.useState('')
+    const [ipOrDomain, setIpOrDomain] = React.useState('')
     const [waitingForResponse, setWaitingForResponse] = React.useState(false)
     const toolIndex = toolIndexOb.toolIndex
 
@@ -28,7 +28,7 @@ const Tools = (toolIndexOb) => {
         .post('http://localhost:3001/john', obj)
         .then(resp=>{
             setWaitingForResponse(false)
-            alert('Réponse de John: ', resp.data)
+            alert('Réponse de John reçue')
         })
         .catch(err=>{
             setWaitingForResponse(false)
@@ -36,13 +36,55 @@ const Tools = (toolIndexOb) => {
         })
     }
 
-    const sendIpOrDomainToBack = (ipOrDomain) => {
+    const sendNmapIpOrDomainToBack = (ipOrDomain) => {
         setWaitingForResponse(true)
         axios
         .post('http://localhost:3001/nmap', {ipOrDomain: ipOrDomain})
         .then(resp=>{
             setWaitingForResponse(false)
-            alert('Réponse de John: ', resp.data)
+            alert('Réponse de NMAP reçue')
+        })
+        .catch(err=>{
+            alert(err)
+            setWaitingForResponse(false)
+        })
+    }
+
+    const sendSqlmapIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+        .post('http://localhost:3001/sqlmap', {ipOrDomain: ipOrDomain})
+        .then(resp=>{
+            setWaitingForResponse(false)
+            alert('Réponse de sqlmap reçue')
+        })
+        .catch(err=>{
+            alert(err)
+            setWaitingForResponse(false)
+        })
+    }
+
+    const sendDnsscanIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+        .post('http://localhost:3001/dnsscan', {ipOrDomain: ipOrDomain})
+        .then(resp=>{
+            setWaitingForResponse(false)
+            alert('Réponse de DnsScan reçue')
+        })
+        .catch(err=>{
+            alert(err)
+            setWaitingForResponse(false)
+        })
+    }
+
+    const sendWpscanIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+        .post('http://localhost:3001/wpscan', {ipOrDomain: ipOrDomain})
+        .then(resp=>{
+            setWaitingForResponse(false)
+            alert('Réponse de wpscan reçue')
         })
         .catch(err=>{
             alert(err)
@@ -82,8 +124,8 @@ const Tools = (toolIndexOb) => {
                         sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
                         noValidate
                         autoComplete="off">
-                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setNmapIpOrDomain(event.target.value)}}/>
-                        <Button onClick={()=>{sendIpOrDomainToBack(nmapIpOrDomain)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
+                        <Button onClick={()=>{sendNmapIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
                     </Box>
                     {waitingForResponse
                     ?
@@ -97,14 +139,14 @@ const Tools = (toolIndexOb) => {
         case 3:
             return(
                 <div>
-                    <Typography variant="h5" sx={{ m: 4}}>DDOS</Typography>
+                    <Typography variant="h5" sx={{ m: 4}}>Sql Map</Typography>
                     <Box
                         component="form"
                         sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
                         noValidate
                         autoComplete="off">
-                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
-                        <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                        <TextField id="outlined-basic" label="IP or Domain" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
+                        <Button onClick={()=>{sendSqlmapIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
                     </Box>
                     {waitingForResponse
                     ?
@@ -118,14 +160,14 @@ const Tools = (toolIndexOb) => {
         case 4:
                 return(
                         <div>
-                            <Typography variant="h5" sx={{ m: 4}}>FIERCE</Typography>
+                            <Typography variant="h5" sx={{ m: 4}}>DNS Scan</Typography>
                             <Box
                                 component="form"
                                 sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
                                 noValidate
                                 autoComplete="off">
-                                <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
-                                <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                                <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
+                                <Button onClick={()=>{sendDnsscanIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
                             </Box>
                             {waitingForResponse
                                 ?
@@ -145,8 +187,8 @@ const Tools = (toolIndexOb) => {
                                     sx={{'& > :not(style)': { m: 1, width: '80ch' }}}
                                     noValidate
                                     autoComplete="off">
-                                    <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setJohnPassToCrack(event.target.value)}}/>
-                                    <Button onClick={()=>{sendJohnHashToBack(johnPassToCrack)}}> Send </Button> 
+                                    <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event)=>{setIpOrDomain(event.target.value)}}/>
+                                    <Button onClick={()=>{sendWpscanIpOrDomainToBack(ipOrDomain)}}> Send </Button> 
                                 </Box>
                                 {waitingForResponse
                                     ?
