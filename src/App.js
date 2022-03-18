@@ -74,6 +74,7 @@ function App() {
         <div><Button onClick={() => setToolSelected(4)} id='buttonfill'> DNS SCAN </Button></div>
         <div><Button onClick={() => setToolSelected(5)} id='buttonfill'> WP SCAN </Button></div>
         <div><Button onClick={() => setToolSelected(6)} id='buttonfill'> DDOS </Button></div>
+        <div><Button onClick={() => setToolSelected(7)} id='buttonfill'> URL Extractor </Button></div>
       </Popover>
     </div>
   );

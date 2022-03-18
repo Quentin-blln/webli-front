@@ -134,6 +134,20 @@ const Tools = (toolIndexOb) => {
             })
     }
 
+    const sendURLExtractorIpOrDomainToBack = (ipOrDomain) => {
+        setWaitingForResponse(true)
+        axios
+            .post('http://localhost:3001/urlextractor', { ipOrDomain: ipOrDomain })
+            .then(resp => {
+                setWaitingForResponse(false)
+                setBackResponse(resp.data)
+            })
+            .catch(err => {
+                alert(err)
+                setWaitingForResponse(false)
+            })
+    }
+
     console.log(toolIndex)
     switch (toolIndex) {
         case 1:
@@ -273,6 +287,28 @@ const Tools = (toolIndexOb) => {
                         }
                     </div>
                 )
+                case 7:
+                    return (
+                        <div>
+                            <Typography variant="h5" sx={{ m: 4 }}>Url Extractor</Typography>
+                            <Box
+                                component="form"
+                                sx={{ '& > :not(style)': { m: 1, width: '80ch' } }}
+                                noValidate
+                                autoComplete="off">
+                                <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
+                                <Button onClick={() => { sendURLExtractorIpOrDomainToBack(ipOrDomain) }}> Send </Button>
+                            </Box>
+                            <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
+                            {waitingForResponse
+                                ?
+                                <Box className='loading'>
+                                    <CircularProgress />
+                                </Box>
+                                : null
+                            }
+                        </div>
+                    )
 
         default:
             return (
