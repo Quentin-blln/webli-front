@@ -1,14 +1,15 @@
-# Getting Started with Create React App
+# How to install Webli:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To install our project on Kali distribution, you have to setup the frontend and the backend on the machine and run it.
 
-## Available Scripts
+## Install depencies
 
-In the project directory, you can run:
+### `npm install`
+run this command in the project directory.
 
 ### `npm start`
+Default used port is 3000.
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
