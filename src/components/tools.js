@@ -19,7 +19,7 @@ import {
 const Tools = (toolIndexOb) => {
     const [johnPassToCrack, setJohnPassToCrack] = React.useState('')
     const [ipOrDomain, setIpOrDomain] = React.useState('')
-    const [numberOfPaquets, setNumberOfPaquets] = React.useState(5000)
+    const [numberOfPackets, setnumberOfPackets] = React.useState(5000)
     const [waitingForResponse, setWaitingForResponse] = React.useState(false)
     const [backResponse, setBackResponse] = React.useState('Here will appear the kali command response')
 
@@ -120,10 +120,10 @@ const Tools = (toolIndexOb) => {
             })
     }
 
-    const sendDDOSIpOrDomainToBack = (ipOrDomain, numberOfPaquets) => {
+    const sendDDOSIpOrDomainToBack = (ipOrDomain, numberOfPackets) => {
         setWaitingForResponse(true)
         axios
-            .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain, numberOfPaquets: numberOfPaquets })
+            .post('http://localhost:3001/ddos', { ipOrDomain: ipOrDomain, numberOfPackets: numberOfPackets })
             .then(resp => {
                 setWaitingForResponse(false)
                 setBackResponse(resp.data)
@@ -150,6 +150,55 @@ const Tools = (toolIndexOb) => {
 
     console.log(toolIndex)
     switch (toolIndex) {
+        case -1:
+            return (
+                <div id='doc'>
+                    <Typography variant="h5" sx={{ m: 4 }} id='docTitle'>DOCUMENTATION</Typography>
+                    <Typography variant="h7" >Webli is a web application dedicated to usage of cybersecurity tools available on Kali distribution. </Typography>
+                    <br/>
+                    <Typography variant="h7" >Every tools used here are free and legals, but their usage can be illegal. </Typography>
+                    <br/>
+                    <Typography variant="h7" >Our project is open source, you can clone and modify it, but everything you do thought it is on your own.</Typography>
+                    <br/> 
+                    <Typography variant="h7" >We will never be responsible for anything you do with it.</Typography>
+                    <br/>
+                    <Typography variant="h7" >So we recommend to use it with few advertised users, or deploy a login feature to manage users and rights.</Typography>
+                    <br/>
+                    <br/>
+                    <Typography variant="h7" >Actually, available tools on Webli are:</Typography>
+                    <br/>
+                    <ul>
+                        <li>
+                        <Typography variant="h7" >John The Ripper (for hash decrypt) </Typography>
+                        <ul><li> <Typography variant="h7" >Enter a password hash and the tool will return you the decrypted password</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >Nmap</Typography>
+                        <ul><li> <Typography variant="h7" >Enter an ip or a domain name and the tool will return you the open port and a trace route</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >SQL Map</Typography>
+                        <ul><li> <Typography variant="h7" >Enter a ip or a domain name and the tool will return you if a sql service is running and the security breach</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >DNS Scan</Typography>
+                        <ul><li> <Typography variant="h7" >Enter a ip or a domain name and the tool will return you all the sub domains</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >WP Scan</Typography>
+                        <ul><li> <Typography variant="h7" >Enter a ip or a domain name and the tool will return you if a Wordpress service is running</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >DDOS</Typography>
+                        <ul><li> <Typography variant="h7" >Enter a ip or a domain name and the tool will send many packets to the host</Typography></li></ul>
+                        </li>
+                        <li>
+                        <Typography variant="h7" >URL Extractor</Typography>
+                        <ul><li> <Typography variant="h7" >Enter a ip or a domain name and the tool will return you all the informations relating to the domain</Typography></li></ul>
+                        </li>
+                    </ul>
+                </div>
+            )
         case 1:
             return (
                 <div>
@@ -274,8 +323,8 @@ const Tools = (toolIndexOb) => {
                             noValidate
                             autoComplete="off">
                             <TextField id="outlined-basic" label="Domain name" variant="outlined" onChange={(event) => { setIpOrDomain(event.target.value) }} />
-                            <TextField defaultValue={numberOfPaquets} id="outlined-basic" label="Paquets to send" variant="outlined" onChange={(event) => { setNumberOfPaquets(event.target.value) }} />
-                            <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain, numberOfPaquets) }}> Send </Button>
+                            <TextField defaultValue={numberOfPackets} id="outlined-basic" label="Packets to send" variant="outlined" onChange={(event) => { setnumberOfPackets(event.target.value) }} />
+                            <Button onClick={() => { sendDDOSIpOrDomainToBack(ipOrDomain, numberOfPackets) }}> Send </Button>
                         </Box>
                         <div id="terminal"><ReactTerminal emulatorState={emulatorState} acceptInput={false} /></div>
                         {waitingForResponse

@@ -26,6 +26,10 @@
   width: 100%;
 }
 
+#inProgress{
+  background-color: rgba(251, 255, 0, 0.788) !important;
+}
+
 #logo_homepage {
   width: 500px;
   position: absolute;
@@ -91,4 +95,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#doc {
+  text-align: start;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 2%;
+}
+#docTitle {
+  text-align: center;
 }
